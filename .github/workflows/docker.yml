@@ -40,4 +40,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: gft-admin:latest
+          tags: huieric/gft-admin:latest
