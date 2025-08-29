@@ -32,6 +32,7 @@ COPY --from=frontend-build /app/frontend/dist /var/www/html
 
 # 拷贝 nginx 配置
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+RUN mkdir -p /var/log/nginx
 RUN chown -R nginx:nginx /var/log
 
 # 启动脚本（前后端都跑）
