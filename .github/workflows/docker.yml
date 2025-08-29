@@ -40,6 +40,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.actor }}/gft-admin:${{ github.sha }}
-          cache-from: type=registry,ref=ghcr.io/${{ github.actor }}/gft-admin:latest
-          cache-to: type=registry,ref=ghcr.io/${{ github.actor }}/gft-admin:latest,mode=max
+          tags: gft-admin:latest
