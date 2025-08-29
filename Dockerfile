@@ -39,4 +39,5 @@ RUN chown -R nginx:nginx /var/log
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
+USER nginx
 CMD ["/start.sh"]
