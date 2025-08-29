@@ -37,4 +37,5 @@ RUN useradd -ms /bin/bash -u 2000 admin && \
     echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER admin
+WORKDIR /home/admin
 CMD ["/start.sh"]
