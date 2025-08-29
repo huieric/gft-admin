@@ -1,0 +1,8 @@
+Flask>=2.3.0
+pandas>=2.0.0
+numpy>=1.24.0
+flask-caching>=2.0.2
+flask-compress>=1.13
+flask_sqlalchemy
+flask_jwt_extended
+pymysql
