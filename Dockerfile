@@ -15,7 +15,7 @@ RUN npm run build:prod
 FROM nginx:stable
 
 # 安装 python runtime
-RUN apt-get update && apt-get install -y procps python3 python3-pip && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y procps python3 python3-pip python3-venv && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app/backend
 
