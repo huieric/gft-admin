@@ -12,7 +12,7 @@ RUN npm run build:prod
 # ---------------------------
 # Stage 2: Build Python backend
 # ---------------------------
-FROM nginx:alpine
+FROM nginx:stable
 
 # 安装 python runtime
 RUN apt-get update && apt-get install -y procps python3 python3-pip && rm -rf /var/lib/apt/lists/*
