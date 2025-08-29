@@ -24,7 +24,7 @@ COPY backend/ ./
 FROM debian:bookworm-slim
 
 # 安装 nginx 和 python runtime
-RUN apt-get update && apt-get install -y nginx python3 python3-pip && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y procps nginx python3 python3-pip && rm -rf /var/lib/apt/lists/*
 
 # 复制 Python 依赖（如果用虚拟环境，可以在 backend-build stage 里做）
 WORKDIR /app/backend
