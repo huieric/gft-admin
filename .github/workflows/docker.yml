@@ -9,13 +9,12 @@ on:
     tags:
       - 'docker-v*.*.*w'
 
-permissions:
-  contents: read
-  packages: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
 
     steps:
       - name: Checkout repository
@@ -44,6 +43,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository  }}:${{ github.sha }}
-          cache-from: type=registry,ref=ghcr.io/${{ github.repository  }}:latest
-          cache-to: type=registry,ref=ghcr.io/${{ github.repository  }}:latest,mode=max
+          tags: ghcr.io/${{ github.repository  }}:latest
