@@ -4,7 +4,7 @@ on:
   push:
     # 手动触发构建
     branches:
-      - main
+      - master
     # 自动触发：当推送符合 `docker-vX.Y.Zw` 格式的 tag 时触发构建
     tags:
       - 'docker-v*.*.*w'
