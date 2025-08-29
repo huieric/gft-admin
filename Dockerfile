@@ -12,24 +12,14 @@ RUN npm run build:prod
 # ---------------------------
 # Stage 2: Build Python backend
 # ---------------------------
-FROM python:3.12-slim AS backend-build
+FROM python:3.12-slim
 WORKDIR /app/backend
 COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY backend/ ./
 
-# ---------------------------
-# Stage 3: Final runtime image
-# ---------------------------
-FROM debian:bookworm-slim
-
-# 安装 nginx 和 python runtime
-RUN apt-get update && apt-get install -y procps nginx python3 python3-pip && rm -rf /var/lib/apt/lists/*
-
-# 复制 Python 依赖（如果用虚拟环境，可以在 backend-build stage 里做）
-WORKDIR /app/backend
-COPY --from=backend-build /usr/local/lib/python3.12 /usr/local/lib/python3.12
-COPY --from=backend-build /app/backend /app/backend
+# 安装 nginx
+RUN apt-get update && apt-get install -y procps nginx && rm -rf /var/lib/apt/lists/*
 
 # 安装前端构建结果到 nginx 静态目录
 RUN mkdir -p /var/www/html
