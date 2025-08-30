@@ -32,12 +32,4 @@ COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
-RUN useradd -ms /bin/bash -u 2000 nginx && \
-    adduser nginx sudo && \
-    echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-
-# 创建日志目录并设置权限
-RUN mkdir -p /var/log && chown -R nginx:nginx /var/log
-
-USER nginx
 CMD ["/start.sh"]
