@@ -27,9 +27,7 @@ COPY --from=frontend-build /app/frontend/dist /var/www/html
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 RUN chown -R nginx:nginx /var/log
 
-WORKDIR /app/backend
-
 # 启动脚本（前后端都跑）
-COPY start.sh start.sh
-RUN chmod +x start.sh
+COPY start.sh /app/backend/start.sh
+RUN chmod +x /app/backend/start.sh
 ENTRYPOINT /app/backend/start.sh
