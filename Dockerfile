@@ -32,4 +32,4 @@ WORKDIR /app/backend
 # 启动脚本（前后端都跑）
 COPY start.sh start.sh
 RUN chmod +x start.sh
-CMD ["./start.sh"]
+ENTRYPOINT /app/backend/start.sh
