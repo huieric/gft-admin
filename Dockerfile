@@ -19,8 +19,6 @@ COPY backend/ /app/backend
 RUN apk add --no-cache python3 py3-pip procps \
     && pip3 install --break-system-packages --no-cache-dir -r /app/backend/requirements.txt
 
-WORKDIR /app/backend
-
 # 安装前端构建结果到 nginx 静态目录
 RUN mkdir -p /var/www/html
 COPY --from=frontend-build /app/frontend/dist /var/www/html
@@ -30,7 +28,8 @@ COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 RUN chown -R nginx:nginx /var/log
 
 # 启动脚本（前后端都跑）
-COPY start.sh /start.sh
-RUN chmod +x /start.sh
+COPY start.sh start.sh
+RUN chmod +x start.sh
 
-CMD ["/start.sh"]
+WORKDIR /app/backend
+CMD ["./start.sh"]
