@@ -17,7 +17,7 @@ FROM nginx:alpine
 # 安装 python runtime
 COPY backend/ /app/backend
 RUN apk add --no-cache python3 py3-pip procps \
-    && pip3 install --no-cache-dir -r /app/backend/requirements.txt
+    && pip3 install --break-system-packages --no-cache-dir -r /app/backend/requirements.txt
 
 WORKDIR /app/backend
 
