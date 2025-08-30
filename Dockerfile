@@ -32,7 +32,7 @@ COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
-RUN groupadd -r nginx && useradd -ms /bin/bash -u 2000 nginx && \
+RUN useradd -ms /bin/bash -u 2000 nginx && \
     adduser nginx sudo && \
     echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
