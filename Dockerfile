@@ -30,4 +30,4 @@ RUN chown -R nginx:nginx /var/log
 # 启动脚本（前后端都跑）
 COPY start.sh /app/backend/start.sh
 RUN chmod +x /app/backend/start.sh
-ENTRYPOINT /app/backend/start.sh
+ENTRYPOINT ["/app/backend/start.sh"]
